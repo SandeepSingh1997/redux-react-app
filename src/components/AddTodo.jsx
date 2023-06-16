@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { create } from "../features/Tasks";
 
 function AddTodo() {
   const [todoInput, setTodoInput] = useState("");
 
+  const idRef = useRef(0);
+
+  const dispatch = useDispatch();
+
+  function handleCreateTodo(e) {
+    e.preventDefault();
+    dispatch(create({ id: idRef.current++, title: todoInput, isDone: false }));
+  }
+
   return (
     <section>
-      <form>
+      <form onSubmit={handleCreateTodo}>
         <input
           type="text"
           placeholder="what's the task ?"

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 
 function TodoList() {
   const tasks = useSelector((state) => state.tasks.value);
+
   function getAllTasks() {
     return tasks.map((task) => (
       <Todo
@@ -21,7 +22,7 @@ function TodoList() {
 function Todo({ id, title, isDone }) {
   return (
     <div>
-      <input type="checkbox" isChecked={idDone} />
+      <input type="checkbox" isChecked={isDone} />
       <span>{title}</span>
     </div>
   );
