@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTask, markComplete } from "../features/Tasks";
 
 function TodoList() {
   const tasks = useSelector((state) => state.tasks.value);
@@ -20,10 +21,28 @@ function TodoList() {
 }
 
 function Todo({ id, title, isDone }) {
+  const dispatch = useDispatch();
   return (
     <div>
-      <input type="checkbox" isChecked={isDone} />
-      <span>{title}</span>
+      <input
+        type="checkbox"
+        isChecked={isDone}
+        onChange={(event) => {
+          dispatch(markComplete({ taskId: id, isDone: event.target.checked }));
+        }}
+      />
+      <span
+        style={{ textDecorationLine: `${isDone ? "line-through" : "none"}` }}
+      >
+        {title}
+      </span>
+      <button
+        onClick={() => {
+          dispatch(deleteTask({ taskId: id }));
+        }}
+      >
+        delete
+      </button>
     </div>
   );
 }
