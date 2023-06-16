@@ -26,7 +26,7 @@ function Todo({ id, title, isDone }) {
     <div>
       <input
         type="checkbox"
-        isChecked={isDone}
+        checked={isDone}
         onChange={(event) => {
           dispatch(markComplete({ taskId: id, isDone: event.target.checked }));
         }}

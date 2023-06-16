@@ -1,4 +1,5 @@
 import AddTodo from "./AddTodo";
+import Dashboard from "./Dashboard";
 import TodoList from "./TodoList";
 
 function Main() {
@@ -6,6 +7,7 @@ function Main() {
     <main>
       <AddTodo />
       <TodoList />
+      <Dashboard />
     </main>
   );
 }
